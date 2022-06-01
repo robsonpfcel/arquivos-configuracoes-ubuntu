@@ -1,0 +1,64 @@
+INSTALAR
+
+# cd /opt/
+
+# sudo tar xzf jdk-8u66-linux-x64.tar.gz
+
+Após extrair os arquivos use o comando  update-alternatives para instalar 
+
+# cd /opt/jdk1.8.0_66/
+# sudo update-alternatives --install /usr/bin/java java /opt/jdk1.8.0_66/bin/java 2
+# sudo update-alternatives --config java
+
+There are 3 programs which provide 'java'.
+
+  Selection    Command
+-----------------------------------------------
+*  1           /opt/jdk1.7.0_71/bin/java
+ + 2           /opt/jdk1.8.0_45/bin/java
+   3           /opt/jdk1.8.0_51/bin/java
+   4           /opt/jdk1.8.0_66/bin/java
+
+Enter to keep the current selection[+], or type selection number: 4
+
+Configuração do javac e comandos jar  usando update-alternatives
+
+# sudo update-alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_66/bin/jar 2
+# sudo update-alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_66/bin/javac 2
+# sudo update-alternatives --set jar /opt/jdk1.8.0_66/bin/jar
+# sudo update-alternatives --set javac /opt/jdk1.8.0_66/bin/javac 
+
+java -version
+
+# export JAVA_HOME=/opt/jdk1.8.0_66
+# export JRE_HOME=/opt/jdk1.8.0_66/jre
+# export PATH=$PATH:/opt/jdk1.8.0_66/bin:/opt/jdk1.8.0_66/jre/bin
+
+--------------------------------------------------------------------------------------------------
+
+DESINSTALAR
+
+- Verificar a configuracao atual:
+
+sudo update-alternatives --display java
+
+- remover cada link simbolico para um binario java
+
+sudo update-alternatives --remove "java" "/usr/lib/jvm/jdk1.7.0_04/bin/java"
+
+sudo update-alternatives --remove "javac" "/usr/lib/jvm/jdk1.7.0_04/bin/javac"
+
+sudo update-alternatives --remove "javaws" "/usr/lib/jvm/jdk1.7.0_04/bin/javaws"
+
+
+- remover pasta
+
+cd /usr/lib/jvm
+sudo rm -rf jdk1.7.0_04
+
+
+- apagar JAVA_HOME
+
+sudo pluma /etc/environment
+apagar linha com JAVA_HOME
+

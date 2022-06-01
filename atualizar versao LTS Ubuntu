@@ -1,0 +1,34 @@
+Para atualizar de 16.04 para 18.04
+
+Alt F2
+
+digitar update-manager na caixa de comando, Executar
+
+O Update Manager deve abrir e informar: A nova versão de distribuição '18.04' está disponível.
+
+Clique em "Atualizar" e siga as instruções na tela.
+
+-----------------------------------------------------------------------------------------------------------
+
+Durante a atualização o sistema pede para desabilitar o Secure Boot para instalar o driver nVidia, que é de terceiros.
+
+Não desabilitei e continuei a instalação.
+
+Em seguida é solicitada a chave MOK (Machine Owner Key, chave do proprietário da máquina), que deve ter 8 caracteres "12345678".
+
+Não executei esta habilitação de chave. 
+
+------------------------------------------------------------------------------------------------------------
+
+de 20.04 para 22.04
+
+sudo apt update && sudo apt upgrade -y
+
+sudo apt dist-upgrade
+
+sudo update-manager
+
+sudo update-manager -d
+O comando abre o gerenciador de atualização, mas com -d opção. O -d opção diz àqueles que não o conhecem para procurar por lançamentos de desenvolvimento.
+
+

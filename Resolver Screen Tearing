@@ -1,0 +1,55 @@
+Quero compartilhar com os amigos como resolvi o problema de screen tearing (tela rasgando, tremendo, piscando) no Ubuntu 22.04. Nas versões anteriores, este problema nunca havia acontecido.
+
+Possuo um notebook com GPU híbrida Nvidia GeForce 920M e Intel HD Graphics 520.
+
+Consegui resolver o problema com as configurações abaixo:
+
+1 - em Drivers Adicionais, instalar o driver proprietário Nvidia recomendado.
+
+- aguardar o sistema baixar e instalar este driver (demora um pouco mas aguarde a conclusão do processo)
+
+- reiniciar o sistema para o driver proprietário ser ativado
+
+- após reiniciar fazer as configurações necessárias para as duas placas de vídeo, conforme abaixo:
+
+2 - Configuração Nvidia, digitar no terminal:
+
+sudo gedit /etc/modprobe.d/nvidia-drm-nomodeset.conf
+
+Ao abrir o gedit, ou seu editor preferido, copie e cole a configuração abaixo:
+
+options nvidia-drm modeset=1
+
+Salve o arquivo.
+
+No terminal digite o comando:
+
+sudo update-initramfs -u
+
+Reinicie o sistema.
+
+Verifique se a configuração deu certo digitando no terminal:
+
+sudo cat /sys/module/nvidia_drm/parameters/modeset
+
+O retorno deve ser a letra Y.
+
+3 - Configuração da Intel, digitar no terminal:
+
+echo -e 'Section "Device"\n Identifier "Intel Graphics"\n Driver "intel"\n Option "AccelMethod" "sna"\n Option "TearFree" "true"\n Option "DRI" "3"\n EndSection' | sudo tee /usr/share/X11/xorg.conf.d/20-intel.conf
+
+Reinicie o sistema.
+
+4 - Escolha qual será sua GPU padrão (Nvidia ou Intel), digitando no terminal:
+
+sudo prime-select query (mostra a placa padrão)
+
+sudo prime-select intel (se quiser intel como padrão)
+
+sudo prime-select nvidia (se quiser nvidia como padrão)
+
+Após estas configurações, o problema foi solucionado.
+
+Utilizo Xubuntu.
+
+É isso, espero ter ajudado.

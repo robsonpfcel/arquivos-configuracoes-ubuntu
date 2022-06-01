@@ -1,0 +1,9 @@
+pen drive criado com rufus
+boot funcionou
+nao foi necessario desativar secure boot no setup
+
+utilizado safe graphics
+cuja escolha inicializará o Ubuntu com "NOMODESET" ativado, ou seja, 
+se você está tendo problemas com placas gráficas ou drivers gráficos, este modo será muito útil.
+
+nomodeset - informa ao kernel para não iniciar os drivers de vídeo até que o sistema esteja ativo e em execução

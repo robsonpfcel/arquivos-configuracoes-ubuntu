@@ -1,0 +1,15 @@
+$ sudo gedit /etc/default/grub
+
+Ache a linha:
+
+GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash”
+
+Deixe como:
+
+GRUB_CMDLINE_LINUX_DEFAULT=””
+
+Para terminar, faça:
+
+$ sudo update-grub
+
+

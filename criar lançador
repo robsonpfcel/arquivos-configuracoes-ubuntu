@@ -1,0 +1,33 @@
+- Criar arquivo
+touch /home/robson/Área\ de\ Trabalho/netbeans.desktop
+
+- Dar permissão execução
+chmod +x /home/robson/Área\ de\ Trabalho/netbeans.desktop 
+
+- editar arquivo
+[Desktop Entry]
+Name=xampp
+Type=Application
+Exec=sudo /opt/lampp/manager-linux-x64.run
+Icon=/opt/lampp/xampp.png
+Terminal=true
+
+- copiar para menu aplicativos para depois adicionar ao dock
+cp netbeans.desktop /home/robson/.local/share/applications/
+
+- aplicativo aparecerá nos instalados
+
+- botão direito, adicionar aos favoritos
+
+
+
+
+
+
+
+
+
+
+
+
+
