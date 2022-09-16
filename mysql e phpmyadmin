@@ -1,0 +1,34 @@
+Instalar os serviços
+sudo apt-get install lamp-server^
+
+Mudar a senha do mysql para logar no serviço
+sudo mysql -u root
+
+Query para alterar a senha
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'sua_nova_senha_aqui';
+
+Instalar o PHPmyAdmin
+sudo apt-get install phpmyadmin
+
+Permissão para criar pastas e arquivos php
+sudo chmod -R 777 /var/www/
+
+service mysql status
+service mysql start
+service mysql stop
+
+Alterar plugin auth_socket usuario root mysql workbench
+sudo mysql -u root -p
+use mysql;
+select User, Host, plugin from mysql.user;
+update user set plugin='mysql_native_password' where User='root';
+select User, Host, plugin from mysql.user;
+flush privileges;
+exit
+service mysql restart
+
+após instalar mysql workbench 
+sudo apt-get -f install para corrigir dependências
+
+
+
