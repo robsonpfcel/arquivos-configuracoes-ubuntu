@@ -1,0 +1,52 @@
+https://www.edivaldobrito.com.br/como-ativar-o-trim-em-discos-ssd-no-ubuntu-linux/
+
+Confirme se você tem um SSD com o comando abaixo. 
+Se o resultado for 0 você tem um SSD, mas se for 1 que é um HDD:
+
+cat /sys/block/sda/queue/rotational
+
+Mesmo se você tiver um SSD, nem todos eles suportam o TRIM. 
+Para saber se o seu suporta execute o comando a seguir:
+
+sudo hdparm -I /dev/sda | grep "TRIM supported"
+
+Se o retorno for igual a mensagem abaixo, então você pode seguir adiante. 
+Data Set Management TRIM supported
+
+Se não houver nenhuma saída, isso significa que seu SSD não suporta TRIM.
+
+Agora execute o comando, conforme abaixo:
+
+sudo fstrim -v /
+
+Você deve ver uma saída, parecida com isso:
+
+/: 87781376 bytes were trimmed
+
+Se tudo correu bem, é hora de programar o cron para executar o fstrim uma vez por dia, 
+para isso, crie um arquivo com esse comando:
+
+gksudo gedit /etc/cron.daily/trim
+
+Copie e cole as linhas abaixo no arquivo criado e salve-o. Em seguida, feche o gedit:
+
+#!/bin/sh
+LOG=/var/log/trim.log
+echo "*** $(date -R) ***" >> $LOG
+fstrim -v / >> $LOG
+fstrim -v /home >> $LOG 
+
+Agora torne o script executável com o comando abaixo:
+
+sudo chmod +x /etc/cron.daily/trim
+
+Pronto. 
+
+Agora seu sistema está com o TRIM habilitado.
+
+
+
+
+
+
+
