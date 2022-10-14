@@ -1,0 +1,51 @@
+https://www.youtube.com/watch?v=_V7Ld2wAx5U&t=177s
+
+- identificar chipset áudio
+comando alsamixer
+
+- comando para visualizar configurações conforme modelo
+xed /usr/share/doc/alsa-base/driver/HD-Audio-Models.txt.gz
+- O modelo é o nome na coluna da esquerda 
+
+- comando para configurar conforme modelo
+sudo xed /etc/modprobe.d/alsa-base.conf
+
+- digitar na última linha do arquivo aberto acima, conforme modelo
+options snd-hda-intel model=AQUI VAI O MODELO
+
+----------------------------------------------------------------------------------
+Caso solução acima não funcione
+sudo apt install alsa-tools-gui
+
+Após instalar, botão iniciar, multimidia, HDAJackRestack
+
+Ao mudar o codec e as configurações, dá mensagem de erro ao tentar salvar
+
+Para quem estiver problemas para dar Apply no HDAJackRetask:
+
+1- Execute no terminal: systemctl --user stop pulseaudio.socket pulseaudio.service
+2- Faça as alterações no HDAJackRetask
+3- Clique em "Apply"
+4- Volte ao terminal e execute: pulseaudio --start
+5- Teste a alteração.
+6- Se estiver tudo certo, agora sim clique em "Install boot override"
+7- Caso ainda esteja com problema, volte novamente ao passo 1.
+
+-------------------------------------------------------------------------------------
+https://www.youtube.com/watch?v=m47hY9iJ9Mw
+Francis Veríssimo
+Linux Mint/Ubuntu - Microfone do Headset Não é Reconhecido
+
+-----------------------------------------------------------------------------------
+sudo apt install pavucontrol
+reboot
+Super, Controle de volume do PulseAudio
+
+
+
+
+
+
+
+
+
