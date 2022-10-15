@@ -1,0 +1,3 @@
+autocomplete jboss tools: botão direito no projeto Configure -> Add JSF Capabilities
+
+menu Project, Clean, Build Automatically para corrigir erro se projeto não funcionar
