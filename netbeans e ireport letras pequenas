@@ -1,0 +1,17 @@
+/usr/local/netbeans - pasta instalação netbeans
+
+/usr/local/netbeans/etc - arquivo netbeans.conf
+
+-j-dsun.java2d.dpiaware=true
+trocar para false
+
+https://www.youtube.com/watch?v=eTvNw2xZfRM
+
+------------------------------------------------------
+ireport/etc
+
+arquivo ireport.conf
+
+default-options= adicionar -j-dsun.java2d.dpiaware=false
+
+* Ambos não funcionaram
