@@ -1,0 +1,51 @@
+swappiness é um parâmetro do Kernel Linux que nos permite configurar a flexibilidade do sistema no uso de Swap
+
+a configuração é feita com valores de 0 à 100. Quanto menor o número, mais restrito será o uso de Swap
+
+Swappiness: 60	Indica que o sistema poderá usar Swap a partir de 40% de uso de RAM
+Swappiness: 40	Indica que o sistema poderá usar Swap a partir de 60% de uso de RAM
+Swappiness: 20	Indica que o sistema poderá usar Swap a partir de 80% de uso de RAM
+Swappiness: 10	Indica que o sistema poderá usar Swap a partir de 90% de uso de RAM
+Swappiness: 1	Indica que o sistema poderá usar Swap a partir de 99% de uso de RAM
+
+verificar o valor atual do swappiness
+sysctl -a | grep -i swappiness
+
+ou
+
+cat /proc/sys/vm/swappiness
+
+Setando valor de Swappiness
+Você pode persistir a configuração no arquivo /etc/sysctl.conf 
+vm.swappiness=30
+
+Feito isso, execute o comando abaixo:
+sysctl -p /etc/sysctl.conf
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+No Red Hat e no Ubuntu, o valor padrão do swappiness, é 60, o que pode ser muito alto para a maioria dos usuários normais do desktop
+
+No Ubuntu, esta variável fica armazenada no arquivo de sistema /proc/sys/vm/swappiness
+Você pode ver o valor de swappiness do seu sistema com o seguinte comando:
+cat /proc/sys/vm/swappiness
+
+Você precisa alterar o arquivo /etc/sysctl.conf, para que a mudança seja permanente
+sudo nano /etc/sysctl.conf
+
+Agora, copie e cole o seguinte código ao final do arquivo:
+
+#
+# Reduz o uso de SWAP
+vm.swappiness=10
+# Melhora a gestão de cache
+vm.vfs_cache_pressure=50
+
+Em seguida, salve e saia do editor
+Reinicie a máquina e veja se houve melhora
+
+
+
+
+
+
+
