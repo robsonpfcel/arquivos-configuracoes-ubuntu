@@ -1,0 +1,89 @@
+Tela login com mesma resolução sistema
+
+Gabriel Coding - YouTube
+
+sudo xed /etc/gdm3/custom.conf
+
+[daemon]
+retirar comentario frente linha WaylandEnable=false
+
+---------------------
+
+Resolução grub
+
+sabermaiscuriosorj - YouTube
+
+sudo xed /boot/grub/grub.cfg
+
+procurar por gfxmode=auto (trocar auto pela resolução)
+
+procurar por gfxpayload="${1}" (trocar ${1} pela resolução)
+
+-------------------
+
+Flavio Varejao - youtube
+
+corrigindo resolução grub e bootsplash
+
+utilizado grub customizer para editar arquivo /boot/grub/grub.cfg
+
+editado linhas: 
+GRUB_GFXMODE=resolução
+GRUB_GFXPAYLOAD_LINUX=resolução
+
+Não adicionar estas linhas, fazer como sabermaiscuriosorj acima
+
+------------------------
+
+sudo xed /etc/default/grub
+Ao final do arquivo mude a linha para o que esta abaixo, isso deve melhorar a resolução da tela do GRUB!
+
+GRUB_GFXMODE=resolucao
+GRUB_GFXPAYLOAD_LINUX=resolucao
+
+Agora Salve o arquivo e vamos gerar um novo arquivo de configurações do GRUB com o comando abaixo:
+
+sudo update-grub2
+
+Para corrigir o problema na tela inicial você deve seguir e executar os comandos abaixo!
+
+sudo xed /etc/initramfs-tools/conf.d/splash
+
+Dentro do arquivo cole a seguinte linha:
+
+echo FRAMEBUFFER=y
+
+Por último, execute o seguinte comando:
+
+sudo update-initramfs -u
+
+Com isso o mesmo valor que você usou na tela do GRUB será aplicado automaticamente na tela inicial ou de desligamento.
+
+--------------------
+
+Obs: utilizando máquina virtual
+
+Abrir o Terminal
+Digite o comando: sudo xed /etc/default/grub
+Localize a linha: GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash“
+Altere para: GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash video=1360×768“
+Salve o arquivo
+Digite o comando: sudo update-grub
+Digite o comando para reiniciar a Maquina Virtual: Reboot
+Seja Feliz 
+
+--------------------
+
+Mudar a resolução na tela de login 
+
+Após instalar o dapper a tela de login esta em uma resolução muito alta e taxa de refresh baixa.
+
+A placa de video é nVidia GeForce FX 5200LE, faço a instalação dos drivers e consigo configurar a resolução normalmente no gnome,
+a atual é 1152x864 Taxa de refresh de 75Mhz. 
+Mas na tela de login não consigo fazer essa mudança, ela fica com a tela em uma resolução de 1280x1024 com taxa de 60Hrtz.
+
+Se alguém tiver alguma dica que me ajude, serei bastante grato.
+
+Edita o arquivo /etc/X11/xorg.conf e retira as resoluções 1280x1024. Ele vai pegar a maior existente que será a 1152x864.
+
+------------
