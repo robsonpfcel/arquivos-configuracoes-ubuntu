@@ -1,0 +1,39 @@
+Agora é possível atualizar o Linux Mint 21 para a versão 21.1.
+
+No Gerenciador de atualizações, clique no botão Atualizar para verificar se há alguma nova versão do mintupdate ou mint-upgrade-info. 
+Se houver atualizações para esses pacotes, aplique-as.
+
+Inicie a atualização do sistema clicando em “Editar->Atualizar para Linux Mint 21.1 Vera”.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Esta página explica como atualizar do Linux Mint 20.3 para o Linux Mint 21.
+
+Primeiro, atualize seu cache e instale a ferramenta de atualização digitando os seguintes comandos em um terminal:
+
+apt update
+apt install mintupgrade
+Em seguida, digite o seguinte comando para iniciar a ferramenta de atualização:
+
+sudo mintupgrade
+
+A atualização substitui os arquivos em /etc/ pelos arquivos de configuração padrão. 
+
+Se o computador não inicializar mais, inicialize a partir do Linux Mint 21 ISO ao vivo.
+Na sessão ao vivo, inicie o Reparo de inicialização e use-o para corrigir a sequência de inicialização.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Conferir screen tearing em /usr/share/X11/xorg.conf.d/20-intel.conf
+
+Arquivos alterados para resolução 1368x768 funcionar na tela login e grub:
+/boot/grub/grub.cfg
+/etc/default/grub
+/etc/initramfs-tools/conf.d/splash
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Grub theme mint:
+apt install --reinstall -o Dpkg::Options::="--force-confmiss" grub2-theme-mint
+
+
+
+
