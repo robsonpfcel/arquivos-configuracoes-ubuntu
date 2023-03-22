@@ -1,0 +1,10 @@
+Dar permissão de executar o programa:
+
+sudo chmod +x netbeans-8.2-linux.sh
+ 
+
+Como se trata de arquivo Shell script utilizaremos o comando sh:
+
+sudo sh netbeans-8.2-linux.sh
+
+

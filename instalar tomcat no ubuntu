@@ -1,0 +1,9 @@
+instalar tomcat no ubuntu:
+
+entrar na pasta bin do tomcat
+dar permissao para todos os arquivos .sh
+sudo chmod +x *.sh
+iniciar o tomcat
+sudo ./startup.sh
+parar o tomcat
+sudo ./shutdown.sh

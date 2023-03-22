@@ -1,0 +1,18 @@
+Primeiro desinstalar versao instalada:
+
+sudo apt-get purge libreoffice? libobasis?
+
+ou
+
+sudo aptitude purge libreoffice? libobasis?
+
+Para instalar:
+
+descompactar arquivos libreoffice e idioma
+pasta debs
+sudo dpkg -i *.deb
+
+para instalar idiomas usar o mesmo procedimento
+
+apos instalar pode ser necessario alterar idioma 
+ferramentas, opcoes
